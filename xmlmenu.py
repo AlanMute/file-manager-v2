@@ -35,7 +35,6 @@ def create_xml_file_manual():
 
     filename += ".xml"
 
-    # Создаем пустую мапу (словарь) для хранения тегов и их значений
     data = {}
     while True:
         tag = input("Введите тег (оставьте пустым для завершения): ").strip()
@@ -46,15 +45,12 @@ def create_xml_file_manual():
 
     try:
         with open(filename, 'w', encoding='utf-8') as file:
-            # Записываем вручную заголовок и корневой элемент
             file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
             file.write('<root>\n')
 
-            # Записываем теги и их значения из мапы
             for tag, value in data.items():
                 file.write(f"  <{tag}>{value}</{tag}>\n")
 
-            # Закрываем корневой элемент
             file.write('</root>\n')
         
         print(f"Файл {filename} создан вручную.")
@@ -76,10 +72,9 @@ def read_xml_file():
 
     if os.path.exists(filename):
         try:
-            # Чтение содержимого файла и вывод его на экран
             with open(filename, 'r', encoding='utf-8') as file:
                 print(f"Содержимое файла {filename}:")
-                print(file.read())  # Выводим содержимое файла как текст
+                print(file.read())
         except Exception as e:
             print(f"Ошибка при чтении XML файла: {e}")
     else:
